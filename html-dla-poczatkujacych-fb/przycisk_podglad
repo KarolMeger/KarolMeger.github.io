@@ -1,0 +1,6 @@
+<form action="?" onsubmit="window.location.href = 'https://youtube.com'; return false">
+
+<center><input type="submit" value="Przejdź to strony YouTube.com">
+
+</form></center>
+
