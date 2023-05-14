@@ -1,5 +1,9 @@
 <script>
 var imie = prompt("Jak masz na imie?")
 alert("Cześć " +imie)
-window.location.href = "https://google.com"
+ if (confirm("Czy chcesz wejść na stronę google.com?")) {
+   window.location.href = 'http://www.google.com';
+   } else {
+   alert("Wybrano opcję: Anuluj");
+ } 
 </script>
