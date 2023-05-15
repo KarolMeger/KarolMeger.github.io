@@ -1,10 +1,12 @@
 <title>ㅤ</title>
 <script>
 var test = prompt("Wpisz tutaj tekst który mam wyświetlić")
- else
- alert("Wybrano opcję: Anuluj");
- window.location.href = 'https://google.com'
+czychcesz()
+ 
+ function czychcesz()
+  if (confirm("Podejmij decyzję!")) {
+   window.location.href = 'reload.html'
+   } else {
+   window.location.href = 'exit.html'
  } 
-alert(test)
-window.location.href = 'reload.html'
 </script>
