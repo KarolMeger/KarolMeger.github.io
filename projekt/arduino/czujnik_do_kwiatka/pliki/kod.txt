@@ -1,0 +1,55 @@
+//By Karol M****
+//YouTube: KAROLM1111
+//TikTok: lorak_000
+//DC: Kaaaarol332
+//Projekt: https://bit.ly/czujnik-do-kwiatka-arduino
+
+#include <TM1637Display.h> //biblioteka do wyświetlacza
+
+#define CLK 3 //pin CLK wyświetlacza
+#define DIO 2 //pin DIO wyświetlacza
+
+
+TM1637Display display(CLK, DIO); //Inicjalizacja wyświetlacza
+
+void setup()
+{
+   int jasnosc = 7; //wpisz tu jasność wyświetlacza (w zakresie od 1 do 7)
+   //---------------------------------------
+   //        START (FUNKACJA SETUP)
+   display.setBrightness(7, true); //Ustawienie maksymalnej jasności wyświetlacza
+   pinMode(11, OUTPUT); //Pin Diody Czerwonej (polecam zostawić na 11)
+   pinMode(13, OUTPUT); //Pin Diody Zielonej
+   display.showNumberDec(8888, false); //Test wyświetlacza
+   delay(200); //Opóźnienie
+   digitalWrite(11, HIGH); //Test diody czerwonej
+   delay(200); //Opóźnienie
+   digitalWrite(11, LOW); //Wyłączenie diody czerwonej
+   digitalWrite(13, HIGH); //Test diody zielonej
+   delay(200); //Opóźnienie
+   digitalWrite(13, LOW); //Wyłączenie diody zielonej
+   display.setBrightness(jasnosc, true); //Ustawienie jasności wyświetlacza na zmienną "jasnosc"
+   //---------------------------------------
+}
+
+void loop()
+{
+  //------------------------------------------
+  //       KOD GŁÓWNY (FUNKCJA LOOP)
+  int stan = (analogRead(A0)); //Zmienna "stan" odczytuje pin A0 (Czujnik wilgotności) (Można zmienić pin) 
+  display.showNumberDec(stan, false); //Pokazuje na wyświetlaczu zmienną "stan"
+  if (analogRead(A0) > 750) { //Jeśli czujnik odczyta wartość większą niż 750 (można zmienić) zapali się dioda zielona
+    digitalWrite(13, HIGH); //Włączenie diody zielonej
+    digitalWrite(11, LOW); //Wyłączenie diody czerwonej
+  } else if (analogRead(A0) < 750) { //Jeśli czujnik odczyta wartość mniejszą niż 750 (można zmienić) zapali się dioda czerwona
+    analogWrite(11, 20); //Włączenie diody zielonej - Jasność Diody Czerwonej (zazwyczaj świeci bardziej niż zielona więc wprowadziłem regulację jasności (1 - 1023))
+    digitalWrite(13, LOW); //Wyłączenie diody zielonej
+  }
+  delay(1000); //Opóźnienie by kod nie szalał (nie polecam zmieniać)
+  //-------------------------------------------
+}
+//By Karol M****
+//YouTube: KAROLM1111
+//TikTok: lorak_000
+//DC: Kaaaarol332
+//Projekt: https://bit.ly/czujnik-do-kwiatka-arduino
