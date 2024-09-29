@@ -25,6 +25,8 @@
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
         }
 
         /* Stylizacja napisu "File Encrypter" */
@@ -55,6 +57,16 @@
             background-color: #1e7e34;
         }
 
+        /* Stylizacja dla napisu pod przyciskiem */
+        .version-info {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #666;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         /* Stylizacja dla mniejszych ekranów */
         @media (max-width: 768px) {
             h1 {
@@ -64,6 +76,10 @@
             .btn {
                 padding: 15px 30px;
                 font-size: 1.2rem;
+            }
+
+            .version-info {
+                font-size: 0.9rem;
             }
         }
 
@@ -76,6 +92,10 @@
                 padding: 10px 20px;
                 font-size: 1rem;
             }
+
+            .version-info {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -84,8 +104,11 @@
     <div class="container">
         <h1>File Encrypter</h1>
         <a href="https://karolmeger.github.io/file-encrypter/v-1-0/File-Encrypter-Installer-V1.0.exe" class="btn" download>Download</a>
+        <p class="version-info">
+            This is version 1.0, it may contain some bugs and some things, if you have the English version selected, may be Polish. 
+            This will be fixed in version 2.0.
+        </p>
     </div>
 
 </body>
 </html>
-
