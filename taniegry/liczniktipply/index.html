@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Szeroki Widget Tipply na pixel-art tle</title>
+<title>Szeroki Widget Tipply Fullscreen</title>
 <style>
   html, body {
     margin: 0; padding: 0; height: 100%;
@@ -15,10 +15,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
   }
   .widget-container {
     width: 90vw;
-    max-width: 900px;      /* szerokość 900px max */
+    max-width: 900px;
     height: auto;
     padding: 20px;
     background: rgba(0,0,0,0.6);
@@ -28,7 +29,7 @@
   }
   iframe {
     width: 100%;
-    height: 500px;         /* mniejsza wysokość */
+    height: 500px;
     border: none;
     border-radius: 10px;
   }
@@ -38,14 +39,63 @@
       padding: 10px;
     }
     iframe {
-      height: 350px;       /* mniejsza wysokość na tabletach i telefonach */
+      height: 350px;
     }
+  }
+  /* Przycisk fullscreen */
+  #fullscreenBtn {
+    margin-bottom: 20px;
+    padding: 12px 30px;
+    background: #ff00ff;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 0 15px #ff00ff;
+    transition: background 0.3s ease;
+  }
+  #fullscreenBtn:hover {
+    background: #cc00cc;
   }
 </style>
 </head>
 <body>
-  <div class="widget-container">
-    <iframe src="https://widgets.tipply.pl/TIPS_GOAL/e42cbcc6-ae57-4628-b1c3-ce482bd6c58d/GOAL/cf7ad30e-5ba7-4366-95b8-8e5b6eafd5b7" allowtransparency="true" scrolling="no"></iframe>
-  </div>
+
+<button id="fullscreenBtn">Pełny ekran</button>
+
+<div class="widget-container" id="widgetContainer">
+  <iframe src="https://widgets.tipply.pl/TIPS_GOAL/e42cbcc6-ae57-4628-b1c3-ce482bd6c58d/GOAL/cf7ad30e-5ba7-4366-95b8-8e5b6eafd5b7" allowtransparency="true" scrolling="no"></iframe>
+</div>
+
+<script>
+  const btn = document.getElementById('fullscreenBtn');
+  const container = document.getElementById('widgetContainer');
+
+  btn.addEventListener('click', () => {
+    // Ukryj guzik
+    btn.style.display = 'none';
+
+    // Wejdź w fullscreen dla całego body
+    if (document.documentElement.requestFullscreen) {
+      document.documentElement.requestFullscreen();
+    } else if (document.documentElement.webkitRequestFullscreen) { /* Safari */
+      document.documentElement.webkitRequestFullscreen();
+    } else if (document.documentElement.msRequestFullscreen) { /* IE11 */
+      document.documentElement.msRequestFullscreen();
+    }
+
+    // Po wejściu w fullscreen możesz ewentualnie dostosować styl (np. iframe na full screen)
+    // Tutaj iframe już ma 100% szerokości kontenera
+  });
+
+  // Opcjonalnie, nasłuchaj wyjścia z fullscreen, by pokazać przycisk ponownie
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) {
+      btn.style.display = 'inline-block';
+    }
+  });
+</script>
+
 </body>
 </html>
