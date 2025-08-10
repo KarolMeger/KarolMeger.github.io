@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Szeroki Widget Tipply na pixel-art tle</title>
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: url('tlo-pixel-art.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+  }
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .widget-container {
+    width: 90vw;
+    max-width: 900px;      /* szerokość 900px max */
+    height: auto;
+    padding: 20px;
+    background: rgba(0,0,0,0.6);
+    border: 2px solid #ff00ff;
+    border-radius: 15px;
+    box-shadow: 0 0 30px #ff00ff;
+  }
+  iframe {
+    width: 100%;
+    height: 500px;         /* mniejsza wysokość */
+    border: none;
+    border-radius: 10px;
+  }
+  @media (max-width: 768px) {
+    .widget-container {
+      max-width: 95vw;
+      padding: 10px;
+    }
+    iframe {
+      height: 350px;       /* mniejsza wysokość na tabletach i telefonach */
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="widget-container">
+    <iframe src="https://widgets.tipply.pl/TIPS_GOAL/e42cbcc6-ae57-4628-b1c3-ce482bd6c58d/GOAL/cf7ad30e-5ba7-4366-95b8-8e5b6eafd5b7" allowtransparency="true" scrolling="no"></iframe>
+  </div>
+</body>
+</html>
